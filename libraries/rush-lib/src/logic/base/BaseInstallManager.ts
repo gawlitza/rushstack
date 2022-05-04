@@ -576,6 +576,9 @@ export abstract class BaseInstallManager {
 
       if (this._rushConfiguration.pnpmOptions.strictPeerDependencies) {
         args.push('--strict-peer-dependencies');
+      } else {
+        // pnpm@^7.0.0 handles peer dependencies strict by default
+        args.push('--no-strict-peer-dependencies');
       }
     } else if (this._rushConfiguration.packageManager === 'yarn') {
       args.push('--link-folder', 'yarn-link');
